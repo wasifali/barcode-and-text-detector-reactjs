@@ -13,5 +13,4 @@ Project will start serving on http://localhost:8080/
 
 ### Details about project:
 
-This project is using [Quagga](https://serratus.github.io/quaggaJS/) or barcode detection and decoding.
-It also is using [tesseract](https://tesseract.projectnaptha.com/) for text detection purpose.
+This project is using [Quagga](https://serratus.github.io/quaggaJS/) or barcode detection and decoding and [tesseract](https://tesseract.projectnaptha.com/) for text detection purpose.
