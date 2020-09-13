@@ -15,6 +15,7 @@ const App = () => {
         width: 50,
         height: 50,
     });
+    const [loading, setLoading] = useState(false);
 
     let fileUrl = '';
 
@@ -38,6 +39,7 @@ const App = () => {
                 'newFile.jpeg'
             );
             setCroppedImageUrl(croppedImageUrl);
+            setLoading(true);
             Quagga.decodeSingle({
                 decoder: {
                     readers: [
@@ -53,16 +55,19 @@ const App = () => {
                 locate: true,
             }, function (result) {
                 if (result && result.codeResult) {
+                    setLoading(false);
                     setBarCode(result.codeResult.code)
-                    console.log("result", result.codeResult.code);
                 } else {
-                    alert('No barcode detected, Please try again latter!')
+                    setLoading(false);
+                    setBarCode('No Barcode Detected!')
                 }
             });
+            setLoading(true);
             Tesseract.recognize(
                 croppedImageUrl
             ).then(({data: {text}}) => {
                 setImageText(text);
+                setLoading(false);
             })
         }
     }
@@ -121,6 +126,7 @@ const App = () => {
     return (
         <>
             <div className="row main-div">
+                {loading && <img className="loading" src='https://gifimage.net/wp-content/uploads/2018/04/loading-bar-gif-transparent-5.gif' alt="Loading ..."/>}
                 <div className="col-sm-8">
                     {src &&
                     <ReactCrop
@@ -154,8 +160,8 @@ const App = () => {
                         <div>
                             <label>Detected Text</label>
                         </div>
-                        <input value={imageText} type="text" name="barcode-text" id="barcode-text"
-                               className="bar-code-number" disabled={true}/>
+                        <textarea value={imageText} type="text" name="barcode-text" id="barcode-text"
+                                  className="bar-code-text" disabled={true}></textarea>
                     </div>
                 </div>
             </div>

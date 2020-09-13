@@ -390,7 +390,7 @@ module.exports = (env, argv) => ({
     */
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.ejs'),
-      title: '',
+      title: 'Barcode reader',
       mobileThemeColor: '#000000',
       description: '',
       minify: {
