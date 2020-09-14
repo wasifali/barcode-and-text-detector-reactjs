@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "quagga": "^0.12.1",
-    "react-image-crop": "^8.6.5"
+    "react-image-crop": "^8.6.5",
+    "tesseract.js": "^2.1.2"
   }
 }
