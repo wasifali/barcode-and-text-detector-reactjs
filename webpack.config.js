@@ -411,7 +411,7 @@ module.exports = (env, argv) => ({
       run: () => {
         console.log('\n')
         API && console.log(`🌎  => API listening on port ${API_PORT}...`)
-        console.log(`💻  => Application running in browser at http://localhost:${DEV_SERVER_PORT}\n\n`)
+        console.log(`💻  => Application running in browser at http://localhost:${DEV_SERVER_PORT? DEV_SERVER_PORT : 8080}\n\n`)
       }
     })
   ].filter(Boolean),
@@ -451,7 +451,7 @@ module.exports = (env, argv) => ({
       http://bit.ly/2WIXOSV, http://bit.ly/2WDMWpv
       Nobody wants to see 0.0.0.0 in the browser. This get's rid of that.
     */
-    public: `http://localhost:${DEV_SERVER_PORT}`,
+    public: `http://localhost:${DEV_SERVER_PORT? DEV_SERVER_PORT : 8080}`,
 
     /*
       http://bit.ly/2XlEOXN
